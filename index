@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bendito Tempero — Comida boa. Bons momentos.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--verde:#1f4a38;--verde2:#2d6a50;--creme:#f6f0e2;--card:#fffaf0;--terra:#b9532f;--grafite:#2b2d2f;--mudo:#6b6a64;--linha:#e3d9c3;--on-verde:#f6f0e2;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--creme:#14211b;--card:#1c2e25;--grafite:#eee7d6;--mudo:#a9b3a8;--linha:#2f4539;--terra:#e07a52;--verde:#2d6a50;--verde2:#3f8a69}}
+:root[data-theme="dark"]{--creme:#14211b;--card:#1c2e25;--grafite:#eee7d6;--mudo:#a9b3a8;--linha:#2f4539;--terra:#e07a52;--verde:#2d6a50;--verde2:#3f8a69}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--creme);color:var(--grafite);font:400 16px/1.55 'DM Sans',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.1;margin:0}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--terra);outline-offset:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--verde);color:var(--on-verde)}
+header .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.logo{font:800 22px 'Fraunces',serif;color:var(--on-verde);text-decoration:none;margin-right:auto}
+nav{display:flex;gap:22px}nav a{color:var(--on-verde);text-decoration:none;font-weight:500;opacity:.9}nav a:hover{opacity:1;text-decoration:underline}
+.btn{border:0;border-radius:999px;padding:12px 22px;font-weight:700;cursor:pointer;background:var(--terra);color:#fff;text-decoration:none;display:inline-block}
+.btn:hover{filter:brightness(1.1)}.btn.ghost{background:transparent;border:2px solid currentColor}
+.btn.sm{padding:8px 16px}
+.cartbtn{background:none;border:0;color:var(--on-verde);cursor:pointer;position:relative;padding:8px;font-size:22px}
+.cartbtn b{position:absolute;top:-2px;right:-4px;background:var(--terra);color:#fff;border-radius:99px;font-size:12px;min-width:20px;height:20px;line-height:20px;text-align:center}
+#burger{display:none;background:none;border:0;color:var(--on-verde);font-size:26px;cursor:pointer}
+.hero{background:var(--verde);color:var(--on-verde);padding:56px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:800}
+.hero p{font-size:18px;max-width:46ch;opacity:.92;margin:18px 0 28px}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap}
+.plate{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 50%,#f6f0e2 0 38%,#e9dcc0 39% 62%,#d7c59f 63%);display:grid;place-items:center;font-size:min(30vw,170px);box-shadow:0 0 0 14px rgba(246,240,226,.12);animation:in .9s ease both}
+@keyframes in{from{opacity:0;transform:scale(.9) rotate(-8deg)}}
+.slogan{font:600 italic 20px 'Fraunces',serif;margin-top:26px;color:#e8c9a8}
+.difs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:-36px;position:relative}
+.dif{background:var(--card);border:1px solid var(--linha);border-radius:14px;padding:20px}
+.dif h3{font-size:20px;margin-bottom:6px}.dif p{margin:0;color:var(--mudo)}
+section{padding:64px 0}
+h2{font-size:clamp(28px,4vw,40px);color:var(--verde);margin-bottom:22px}
+@media (prefers-color-scheme:dark){h2{color:#8fcfae}}
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.tools input{flex:1;min-width:200px;padding:11px 16px;border-radius:999px;border:1px solid var(--linha);background:var(--card)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--linha);background:var(--card);border-radius:999px;padding:8px 16px;cursor:pointer;font-weight:500}
+.chip[aria-pressed=true]{background:var(--verde);color:var(--on-verde);border-color:var(--verde)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.prod{background:var(--card);border:1px solid var(--linha);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.ph{height:130px;display:grid;place-items:center;font-size:62px}
+.prod .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.prod h3{font-size:19px}.prod p{margin:0;color:var(--mudo);font-size:14px;flex:1}
+.prod .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.price{font-weight:700;color:var(--terra);font-size:18px}
+.empty{color:var(--mudo);padding:24px 0}
+.about{background:var(--card);border-block:1px solid var(--linha)}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about p{margin:0 0 14px;max-width:56ch}
+footer{background:var(--verde);color:var(--on-verde);padding:36px 0;text-align:center}
+footer p{margin:4px 0;opacity:.9}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:30;display:none}
+.overlay.open{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--creme);z-index:31;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.open{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--linha)}
+.dh h3{font-size:22px}.x{background:none;border:0;font-size:26px;cursor:pointer}
+.items{flex:1;overflow:auto;padding:8px 20px}
+.it{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--linha)}
+.it small{color:var(--mudo)}
+.qty{display:flex;align-items:center;gap:8px;grid-column:1;margin-top:4px}
+.qty button{width:30px;height:30px;border-radius:50%;border:1px solid var(--linha);background:var(--card);cursor:pointer}
+.rm{background:none;border:0;color:var(--terra);cursor:pointer;text-decoration:underline;grid-column:2;grid-row:2;justify-self:end}
+.df{padding:16px 20px;border-top:1px solid var(--linha)}
+.tot{display:flex;justify-content:space-between;margin-bottom:6px}.tot.big{font:800 22px 'Fraunces',serif;margin-bottom:12px}
+.modal{position:fixed;inset:0;z-index:32;display:none;place-items:center;padding:16px}
+.modal.open{display:grid}
+.mbox{background:var(--creme);border-radius:16px;max-width:560px;width:100%;max-height:92vh;overflow:auto;padding:24px}
+.mbox label{display:block;font-weight:500;margin:14px 0 4px}
+.mbox input[type=text],.mbox input[type=tel],.mbox textarea{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--linha);background:var(--card)}
+.mbox .opts{display:flex;gap:18px;margin:6px 0}
+.err{color:var(--terra);font-size:14px;margin-top:4px;min-height:0}
+.aviso{background:var(--card);border:1px dashed var(--terra);border-radius:10px;padding:12px 14px;font-size:14px;margin:16px 0}
+.sumo{background:var(--card);border:1px solid var(--linha);border-radius:10px;padding:12px 14px;margin-top:8px;font-size:15px}
+.sumo div{display:flex;justify-content:space-between;gap:12px}
+@media (max-width:760px){
+ nav{position:absolute;top:64px;left:0;right:0;background:var(--verde);flex-direction:column;gap:0;padding:8px 20px 16px;display:none}
+ nav.open{display:flex}nav a{padding:12px 0}
+ #burger{display:block}.hide-m{display:none}
+ .hero .wrap,.about .wrap,.difs{grid-template-columns:1fr}
+ .plate{max-width:240px;margin:0 auto}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <a class="logo" href="#inicio">Bendito Tempero</a>
+ <nav id="nav" aria-label="Principal"><a href="#inicio">Início</a><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre nós</a><a href="#contato">Contato</a></nav>
+ <button class="cartbtn" id="openCart" aria-label="Abrir carrinho">🛒<b id="count">0</b></button>
+ <a class="btn sm hide-m" href="#cardapio">Fazer pedido</a>
+ <button id="burger" aria-label="Abrir menu" aria-expanded="false">☰</button>
+</div></header>
+
+<main>
+<div class="hero" id="inicio"><div class="wrap">
+ <div>
+  <h1>Seu próximo prato favorito está aqui.</h1>
+  <p>No Bendito Tempero, as refeições são saborosas, variadas e preparadas para tornar qualquer momento melhor — do executivo do almoço à porção para dividir.</p>
+  <div class="btns"><a class="btn" href="#cardapio">Ver cardápio</a><button class="btn ghost" id="heroOrder">Montar meu pedido</button></div>
+  <div class="slogan">Comida boa. Bons momentos.</div>
+ </div>
+ <div class="plate" aria-hidden="true">🍛</div>
+</div></div>
+
+<div class="wrap difs">
+ <div class="dif"><h3>Variedade de pratos</h3><p>Executivos, carnes, massas, porções e bebidas para todos os gostos.</p></div>
+ <div class="dif"><h3>Sabor de verdade</h3><p>Tempero caseiro e ingredientes frescos em cada prato.</p></div>
+ <div class="dif"><h3>Praticidade</h3><p>Monte o pedido aqui e finalize pelo WhatsApp em poucos toques.</p></div>
+</div>
+
+<section id="cardapio"><div class="wrap">
+ <h2>Cardápio</h2>
+ <div class="tools"><input id="busca" type="search" placeholder="Buscar prato pelo nome" aria-label="Buscar prato"><div class="chips" id="chips"></div></div>
+ <div class="grid" id="grid"></div>
+ <p class="empty" id="nada" hidden>Nenhum prato encontrado. Tente outro nome ou categoria.</p>
+</div></section>
+
+<section class="about" id="sobre"><div class="wrap">
+ <div><h2>Sobre nós</h2>
+ <p>O Bendito Tempero é um restaurante convencional, feito para quem gosta de comer bem sem complicação. Cozinhamos o básico com capricho: arroz soltinho, carne no ponto e molho com personalidade.</p>
+ <p>Seja para o almoço do dia a dia ou para reunir a família no fim de semana, a mesa está sempre posta.</p></div>
+ <div><h2>Como funciona</h2>
+ <p>Escolha seus pratos, ajuste as quantidades no carrinho e informe seus dados. Ao final, abrimos o WhatsApp do restaurante com o pedido organizado e pronto para enviar.</p></div>
+</div></section>
+</main>
+
+<footer id="contato"><div class="wrap">
+ <h3>Bendito Tempero</h3>
+ <p>Comida boa. Bons momentos.</p>
+ <p>WhatsApp: (11) 90000-0000 · Seg a sáb, 11h às 22h</p>
+ <p style="font-size:13px;opacity:.7">Projeto de portfólio da Rossettini Prime. Produtos, preços e telefone são fictícios.</p>
+</div></footer>
+
+<div class="overlay" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="Carrinho">
+ <div class="dh"><h3>Seu pedido</h3><button class="x" id="closeCart" aria-label="Fechar carrinho">×</button></div>
+ <div class="items" id="items"></div>
+ <div class="df" id="dfoot">
+  <div class="tot"><span>Subtotal</span><span id="sub"></span></div>
+  <div class="tot big"><span>Total</span><span id="tot"></span></div>
+  <button class="btn" style="width:100%" id="checkout">Finalizar pedido</button>
+ </div>
+</aside>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="mbox">
+ <div class="dh" style="padding:0 0 12px"><h3 id="mt">Revisar pedido</h3><button class="x" id="closeM" aria-label="Fechar">×</button></div>
+ <div class="sumo" id="resumo"></div>
+ <label>Como você quer receber?</label>
+ <div class="opts"><label><input type="radio" name="tipo" value="Retirada no local" checked> Retirada no local</label><label><input type="radio" name="tipo" value="Entrega"> Entrega</label></div>
+ <label for="nome">Nome</label><input type="text" id="nome" autocomplete="name"><div class="err" id="e-nome"></div>
+ <label for="tel">Telefone</label><input type="tel" id="tel" autocomplete="tel" placeholder="(11) 90000-0000"><div class="err" id="e-tel"></div>
+ <div id="endBox" hidden><label for="end">Endereço de entrega</label><input type="text" id="end" autocomplete="street-address" placeholder="Rua, número, bairro"><div class="err" id="e-end"></div></div>
+ <label for="obs">Observações (opcional)</label><textarea id="obs" rows="2" placeholder="Ex.: sem cebola"></textarea>
+ <div class="aviso">Seu pedido só será efetivamente enviado depois que você abrir o WhatsApp e tocar em enviar a mensagem. Até lá, nada foi encaminhado ao restaurante.</div>
+ <button class="btn" style="width:100%" id="confirm">Confirmar e abrir WhatsApp</button>
+</div></div>
+
+<script>
+const CONFIG={whatsapp:"5511900000000",moeda:"BRL"}; // trocar pelo número real, só dígitos, formato internacional
+const CATEGORIAS=["Pratos executivos","Carnes e frangos","Massas e risotos","Porções e acompanhamentos","Bebidas","Sobremesas"];
+const PRODUTOS=[
+{id:1,cat:0,nome:"Executivo de Bife Acebolado",desc:"Bife, arroz, feijão, batata frita e salada.",preco:32.9,e:"🥩",cor:"#e8c9a8"},
+{id:2,cat:0,nome:"Executivo de Frango Grelhado",desc:"Filé de frango, arroz, feijão e legumes.",preco:29.9,e:"🍗",cor:"#f0dba8"},
+{id:3,cat:0,nome:"Executivo de Filé de Peixe",desc:"Tilápia grelhada, arroz, purê e salada.",preco:34.9,e:"🐟",cor:"#cfe0d2"},
+{id:4,cat:1,nome:"Picanha na Chapa",desc:"Picanha fatiada com alho e farofa crocante.",preco:68.9,e:"🥩",cor:"#e3b79c"},
+{id:5,cat:1,nome:"Frango à Parmegiana",desc:"Empanado com molho e queijo gratinado.",preco:44.9,e:"🍗",cor:"#f0c9a0"},
+{id:6,cat:1,nome:"Costela Assada",desc:"Costela macia assada por horas, com mandioca.",preco:59.9,e:"🍖",cor:"#dcae92"},
+{id:7,cat:2,nome:"Espaguete à Bolonhesa",desc:"Massa al dente com molho de carne da casa.",preco:36.9,e:"🍝",cor:"#f1d3a3"},
+{id:8,cat:2,nome:"Fettuccine ao Alfredo",desc:"Molho cremoso de queijo com frango desfiado.",preco:39.9,e:"🍝",cor:"#f3e2b8"},
+{id:9,cat:2,nome:"Risoto de Cogumelos",desc:"Arroz arbóreo cremoso com mix de cogumelos.",preco:42.9,e:"🍚",cor:"#e4dcc2"},
+{id:10,cat:3,nome:"Batata Frita",desc:"Porção crocante para dividir (400 g).",preco:24.9,e:"🍟",cor:"#f4d98f"},
+{id:11,cat:3,nome:"Mandioca Frita",desc:"Mandioca sequinha com molho verde.",preco:22.9,e:"🥔",cor:"#f0e0b0"},
+{id:12,cat:3,nome:"Arroz, Feijão e Farofa",desc:"Acompanhamento completo para 2 pessoas.",preco:16.9,e:"🍚",cor:"#e8d9b5"},
+{id:13,cat:4,nome:"Suco Natural",desc:"Laranja, limão ou maracujá (400 ml).",preco:9.9,e:"🍊",cor:"#f6c98a"},
+{id:14,cat:4,nome:"Refrigerante Lata",desc:"Cola, guaraná ou limão (350 ml).",preco:6.5,e:"🥤",cor:"#e9b7a5"},
+{id:15,cat:4,nome:"Água Mineral",desc:"Com ou sem gás (500 ml).",preco:4.0,e:"💧",cor:"#cfe3e8"},
+{id:16,cat:5,nome:"Pudim de Leite",desc:"Clássico, com calda de caramelo.",preco:12.9,e:"🍮",cor:"#efcf9c"},
+{id:17,cat:5,nome:"Mousse de Maracujá",desc:"Leve e cremosa, na taça.",preco:11.9,e:"🍨",cor:"#f5e2a0"}
+];
+const $=s=>document.querySelector(s);
+const R=v=>v.toLocaleString("pt-BR",{style:"currency",currency:CONFIG.moeda});
+let cart=[],cat=-1,termo="";
+try{cart=JSON.parse(localStorage.getItem("bt_cart")||"[]").filter(i=>PRODUTOS.some(p=>p.id===i.id))}catch(e){cart=[]}
+const save=()=>{try{localStorage.setItem("bt_cart",JSON.stringify(cart))}catch(e){}};
+const total=()=>cart.reduce((s,i)=>s+PRODUTOS.find(p=>p.id===i.id).preco*i.q,0);
+const prod=id=>PRODUTOS.find(p=>p.id===id);
+
+function chips(){
+ const c=$("#chips");c.innerHTML="";
+ ["Todos",...CATEGORIAS].forEach((n,i)=>{const b=document.createElement("button");b.className="chip";b.textContent=n;
+  b.setAttribute("aria-pressed",cat===i-1);b.onclick=()=>{cat=i-1;chips();grid()};c.appendChild(b)});
+}
+function grid(){
+ const t=termo.trim().toLowerCase();
+ const l=PRODUTOS.filter(p=>(cat<0||p.cat===cat)&&p.nome.toLowerCase().includes(t));
+ $("#nada").hidden=l.length>0;
+ $("#grid").innerHTML=l.map(p=>`<article class="prod"><div class="ph" style="background:${p.cor}" aria-hidden="true">${p.e}</div><div class="body"><h3>${p.nome}</h3><p>${p.desc}</p><div class="row"><span class="price">${R(p.preco)}</span><button class="btn sm" data-add="${p.id}">Adicionar</button></div></div></article>`).join("");
+}
+function add(id){const i=cart.find(x=>x.id===id);i?i.q++:cart.push({id,q:1});render()}
+function render(){
+ save();
+ const n=cart.reduce((s,i)=>s+i.q,0);$("#count").textContent=n;
+ const box=$("#items");
+ if(!cart.length){box.innerHTML=`<div class="empty"><p><strong>Seu carrinho está vazio.</strong><br>Que tal escolher um prato do cardápio?</p><button class="btn" id="back">Voltar ao cardápio</button></div>`;$("#dfoot").hidden=true;$("#back").onclick=()=>{closeAll();location.hash="#cardapio"};return}
+ $("#dfoot").hidden=false;
+ box.innerHTML=cart.map(i=>{const p=prod(i.id);return `<div class="it"><div><strong>${p.nome}</strong><br><small>${R(p.preco)} cada</small></div><strong>${R(p.preco*i.q)}</strong><div class="qty"><button data-m="${i.id}" aria-label="Diminuir">−</button><span>${i.q}</span><button data-p="${i.id}" aria-label="Aumentar">+</button></div><button class="rm" data-r="${i.id}">Remover</button></div>`}).join("");
+ $("#sub").textContent=$("#tot").textContent=R(total());
+}
+function openCart(){$("#drawer").classList.add("open");$("#ov").classList.add("open")}
+function closeAll(){["#drawer","#ov","#modal"].forEach(s=>$(s).classList.remove("open"))}
+document.addEventListener("click",e=>{
+ const t=e.target,d=t.dataset;
+ if(d.add){add(+d.add);openCart();return}
+ if(d.p){add(+d.p)}
+ if(d.m){const i=cart.find(x=>x.id==d.m);if(--i.q<=0)cart=cart.filter(x=>x!==i);render()}
+ if(d.r){cart=cart.filter(x=>x.id!=d.r);render()}
+});
+$("#busca").oninput=e=>{termo=e.target.value;grid()};
+$("#openCart").onclick=openCart;$("#closeCart").onclick=$("#ov").onclick=closeAll;$("#closeM").onclick=()=>$("#modal").classList.remove("open");
+$("#heroOrder").onclick=()=>cart.length?openCart():document.getElementById("cardapio").scrollIntoView();
+$("#burger").onclick=()=>{const o=$("#nav").classList.toggle("open");$("#burger").setAttribute("aria-expanded",o)};
+$("#nav").onclick=()=>$("#nav").classList.remove("open");
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAll()});
+
+$("#checkout").onclick=()=>{
+ $("#drawer").classList.remove("open");$("#ov").classList.remove("open");
+ $("#resumo").innerHTML=cart.map(i=>{const p=prod(i.id);return `<div><span>${i.q}× ${p.nome}</span><span>${R(p.preco*i.q)}</span></div>`}).join("")+`<div style="margin-top:8px;border-top:1px solid var(--linha);padding-top:8px"><span>Subtotal</span><span>${R(total())}</span></div><div><strong>Total</strong><strong>${R(total())}</strong></div>`;
+ $("#modal").classList.add("open");
+};
+document.querySelectorAll("[name=tipo]").forEach(r=>r.onchange=()=>{$("#endBox").hidden=document.querySelector("[name=tipo]:checked").value!=="Entrega"});
+$("#confirm").onclick=()=>{
+ const tipo=document.querySelector("[name=tipo]:checked").value,nome=$("#nome").value.trim(),tel=$("#tel").value.replace(/\D/g,""),end=$("#end").value.trim();
+ const er={nome:nome.length<2?"Informe seu nome.":"",tel:tel.length<10||tel.length>11?"Informe um telefone com DDD.":"",end:tipo==="Entrega"&&end.length<5?"Informe o endereço de entrega.":""};
+ $("#e-nome").textContent=er.nome;$("#e-tel").textContent=er.tel;$("#e-end").textContent=er.end;
+ if(er.nome||er.tel||er.end||!cart.length)return;
+ let m=`*Novo pedido — Bendito Tempero*\n\n*Cliente:* ${nome}\n*Telefone:* ${$("#tel").value.trim()}\n*Recebimento:* ${tipo}\n`;
+ if(tipo==="Entrega")m+=`*Endereço:* ${end}\n`;
+ m+=`\n*Itens:*\n`+cart.map(i=>{const p=prod(i.id);return `• ${i.q}x ${p.nome} — ${R(p.preco*i.q)}`}).join("\n");
+ m+=`\n\n*Subtotal:* ${R(total())}\n*Total:* ${R(total())}`;
+ const o=$("#obs").value.trim();if(o)m+=`\n\n*Observações:* ${o}`;
+ window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(m)}`,"_blank","noopener");
+};
+chips();grid();render();
+</script>
+</body>
+</html>
